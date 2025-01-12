@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <title>CRUD Users</title>
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="mb-4">Manage Users</h1>
+
+    <!-- Flash Message -->
+    {{#if messages.success}}
+    <div class="alert alert-success" id="flash-message">
+      {{messages.success}}
+    </div>
+    {{/if}}
+
+    <!-- Add User Button -->
+    <div class="mb-3">
+      <a href="/addUser" class="btn btn-primary">Add User</a>
+    </div>
+
+    <!-- Users Table -->
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Age</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each users}}
+        <tr>
+          <td>{{increment @index}}</td>
+          <td>{{name}}</td>
+          <td>{{email}}</td>
+          <td>{{age}}</td>
+          <td>
+            <div class="btn-group" role="group">
+              <!-- View Button -->
+              <a href="/users/{{id}}" class="btn btn-info btn-sm mr-2">View</a>
+              
+              <!-- Edit Button -->
+              <a href="/users/{{id}}/edit" class="btn btn-warning btn-sm mr-2">Edit</a>
+              
+              <!-- Delete Form -->
+              <form action="/users/{{id}}/delete" method="POST" style="display: inline;">
+                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+              </form>
+            </div>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    // Hide flash message after 2 seconds
+    setTimeout(function () {
+      const flashMessage = document.getElementById("flash-message");
+      if (flashMessage) {
+        flashMessage.style.transition = "opacity 0.5s ease";
+        flashMessage.style.opacity = "0";
+        setTimeout(() => flashMessage.remove(), 500); // Wait for fade-out effect before removing
+      }
+    }, 2000);
+  </script>
+</body>
+</html>

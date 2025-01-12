@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail User</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .user-header {
+        padding: 50px 0;
+        text-align: center;
+      }
+      .user-title {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+      .user-info {
+
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="user-header">
+      <h1 class="user-title">{{user.name}}</h1>
+    </div>
+
+    <!-- User Details -->
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-2 user-info">
+          <div>
+            <h6 class="fw-bold">Email</h6>
+            <p>{{user.email}}</p>
+          </div>
+          <div class="mt-4">
+            <h6 class="fw-bold">Age</h6>
+            <p>{{user.age}} years old</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="text-center mt-5">
+      <a href="/users" class="btn btn-dark">Kembali ke Daftar User</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
